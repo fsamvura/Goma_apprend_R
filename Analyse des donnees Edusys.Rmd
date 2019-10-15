@@ -1,0 +1,56 @@
+---
+title: "Etude ISDR/GL"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+# 1. Lecture des différentes tables d'Edusys
+```{r, echo=FALSE }
+Etudiants<- read.csv("H:/ISDR-GL/Data/edusys/Etudiants.csv")
+FeesPayment<- read.csv("H:/ISDR-GL/Data/edusys/FeesPayment.csv")
+Tlevel<- read.csv("H:/ISDR-GL/Data/edusys/Tlevel.csv")
+additional_reg<- read.csv("H:/ISDR-GL/Data/edusys/additional_reg.csv")
+assignment<- read.csv("H:/ISDR-GL/Data/edusys/assignment.csv")
+communication<- read.csv("H:/ISDR-GL/Data/edusys/communication.csv")
+config_docs<- read.csv("H:/ISDR-GL/Data/edusys/config_docs.csv")
+config_gen<- read.csv("H:/ISDR-GL/Data/edusys/config_gen.csv")
+course<- read.csv("H:/ISDR-GL/Data/edusys/course.csv")
+debts<- read.csv("H:/ISDR-GL/Data/edusys/debts.csv")
+debtspayment<- read.csv("H:/ISDR-GL/Data/edusys/debtspayment.csv")
+document<- read.csv("H:/ISDR-GL/Data/edusys/document.csv")
+downloads<- read.csv("H:/ISDR-GL/Data/edusys/downloads.csv")
+fees<- read.csv("H:/ISDR-GL/Data/edusys/fees.csv")
+grid<- read.csv("H:/ISDR-GL/Data/edusys/grid.csv")
+msg<- read.csv("H:/ISDR-GL/Data/edusys/msg.csv")
+optionalfees<- read.csv("H:/ISDR-GL/Data/edusys/optionalfees.csv")
+options<- read.csv("H:/ISDR-GL/Data/edusys/options.csv")
+timetable<- read.csv("H:/ISDR-GL/Data/edusys/timetable.csv")
+timetable_s<- read.csv("H:/ISDR-GL/Data/edusys/timetable_s.csv")
+unity<- read.csv("H:/ISDR-GL/Data/edusys/unity.csv")
+registration<- read.csv("H:/ISDR-GL/Data/edusys/registration.csv")
+users<- read.csv("H:/ISDR-GL/Data/edusys/users.csv")
+
+```
+Un total de 23 tables est lu à partir d'Edusys. Ces tables servent à évaluer la progression des étudiants.
+
+## R Markdown
+
+Les écoles d'origines principales 
+```{r Etudiants}
+library(dplyr)
+ecole<-table(Etudiants$ecole)
+barplot(ecole[order(ecole, decreasing=T)]) 
+Etudiants %>% freq(ecole)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r fees, echo=FALSE}
+plot(amount)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
